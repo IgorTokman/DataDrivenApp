@@ -1,0 +1,28 @@
+{
+  "name": "DataDrivenApp",
+  "description": "An application for taking attendance at meetups",
+  "main": "",
+  "authors": [
+    "IgorTokman"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "builds/development/js/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.0",
+    "angular-route": "~1.4.0",
+    "angular-resource": "~1.4.0",
+    "angular-sanitize": "~1.4.0",
+    "angular-animate": "~1.4.0",
+    "firebase": "~2.2.7",
+    "angularfire": "~1.1.1"
+  }
+}
