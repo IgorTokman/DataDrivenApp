@@ -1,5 +1,5 @@
 (function() {
-    var app = angular.module('app', ['ngRoute']);
+    var app = angular.module('app', ['ngRoute', 'firebase']);
 
 
     app.config(['$routeProvider', function ($routeProvider) {
@@ -13,12 +13,13 @@
                 controller: 'RegistrationCtrl'
             })
             .when('/meetings', {
-                templateUrl: 'views/meetings.html'
+                templateUrl: 'views/meetings.html',
+                controller: 'MeetingCtrl'
             })
             .otherwise({
                 redirectTo: '/login'
             });
     }
     ]);
-
+    
 })();
