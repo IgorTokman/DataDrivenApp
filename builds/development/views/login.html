@@ -1,0 +1,16 @@
+<section class="login">
+    <h2>Login</h2>
+    <p>to access the awesomeness</p>
+
+    <form name="myForm" novalidate ng-submit="login()">
+
+        <input name="email" placeholder="Email" ng-required="true" ng-model="user.email" type="email">
+        <p ng-show="myForm.email.$invalid && myForm.email.$touched">Must be a valid email</p>
+
+        <input name="password" placeholder="Password" ng-required="true" ng-model="user.password" type="password">
+        <p ng-show="myForm.password.$invalid && myForm.password.$touched">Enter your password</p>
+
+        <button class="btn" type="submit" ng-disabled="myForm.$invalid">Login</button>
+        <p>or <a href="#/register">register</a></p>
+    </form>
+</section>
