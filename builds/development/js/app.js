@@ -24,9 +24,9 @@
                 templateUrl:    'views/register.html',
                 controller:     'RegistrationCtrl'
             })
-            .when('/success', {
-                templateUrl:    'views/success.html',
-                controller:     'SuccessCtrl',
+            .when('/meetings', {
+                templateUrl:    'views/meetings.html',
+                controller:     'MeetingsCtrl',
                 resolve:        {
                     currentAuth:    function (Authentication) {
                         return Authentication.requireAuth();
