@@ -21,7 +21,7 @@
                    }
                 });
 
-                return{
+                var myObject = {
                     login:  function (user) {
                         auth.$authWithPassword({
                             email:      user.email,
@@ -60,6 +60,8 @@
                                         email:      user.email
                                 });     //user info
 
+                                myObject.login(user);
+
                                 $rootScope.message = "Welcome " +
                                     user.firstname +
                                     " Thanks for registration";
@@ -67,8 +69,10 @@
                             .catch(function (error) {
                                 $rootScope.message = error.message;
 
-                            });     //createUser
+                            });   //createUser
                     }   //register
                 };
+
+                return myObject;
         }]);    //factory
 })();
