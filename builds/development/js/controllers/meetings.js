@@ -21,6 +21,14 @@
                        var meetingsInfo = $firebaseArray(meetingsRef);
                        $scope.meetings = meetingsInfo;
 
+                       meetingsInfo.$loaded().then(function (data) {
+                           $rootScope.howManyMeetings = meetingsInfo.length;
+                       });//    make sure meetings data is loaded
+
+                       meetingsInfo.$watch(function (data) {
+                           $rootScope.howManyMeetings = meetingsInfo.length;
+                       });
+
                        $scope.deleteMeeting = function (key) {
                            meetingsInfo.$remove(key);
                        }
