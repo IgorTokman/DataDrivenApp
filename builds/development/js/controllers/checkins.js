@@ -2,9 +2,9 @@
     "use strict";
 
     angular.module("myApp")
-        .controller('CheckinsCtrl', ['$scope', '$rootScope',
+        .controller('CheckinsCtrl', ['$scope', '$rootScope', '$location',
             '$firebaseObject','$routeParams', '$firebaseArray', 'FIREBASE_URL',
-            function ($scope, $rootScope, $firebaseObject, $routeParams,
+            function ($scope, $rootScope, $location, $firebaseObject, $routeParams,
                       $firebaseArray, FIREBASE_URL) {
 
                       $scope. whichmeeting = $routeParams.mId;
@@ -14,8 +14,12 @@
                 $scope.whichuser + '/meetings/' + $scope.whichmeeting
                 + '/checkins');
 
+                var checkinsList = $firebaseArray(ref);
+                $scope.checkins = checkinsList;
+
                 $scope.addCheckin = function () {
                     var checkinsInfo = $firebaseArray(ref);
+
                     var myData= {
                         firstname:  $scope.user.firstname,
                         lastname:   $scope.user.lastname,
@@ -23,8 +27,10 @@
                         date:       Firebase.ServerValue.TIMESTAMP
                     };     //myData
 
-                    checkinsInfo.$add(myData);
-                    $scope.user = {};
+                    checkinsInfo.$add(myData).then(function () {
+                       $location.path('/checkins/' + $scope.whichuser
+                       + '/' + $scope.whichmeeting + '/checkinslist');
+                    });
                 };      //addCheckin
 
             }]);   //Controller

@@ -28,6 +28,10 @@
                 templateUrl:    'views/checkins.html',
                 controller:     'CheckinsCtrl'
             })
+            .when('/checkins/:uId/:mId/checkinslist', {
+                templateUrl:    'views/checkinslist.html',
+                controller:     'CheckinsCtrl'
+            })
             .when('/meetings', {
                 templateUrl:    'views/meetings.html',
                 controller:     'MeetingsCtrl',
