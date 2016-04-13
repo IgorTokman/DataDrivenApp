@@ -19,6 +19,11 @@
                       + '/meetings');
 
                        var meetingsInfo = $firebaseArray(meetingsRef);
+                       $scope.meetings = meetingsInfo;
+
+                       $scope.deleteMeeting = function (key) {
+                           meetingsInfo.$remove(key);
+                       }
 
                        $scope.addMeeting = function () {
                            meetingsInfo.$add({
