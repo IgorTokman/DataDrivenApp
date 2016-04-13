@@ -3,16 +3,25 @@
 
     angular.module("myApp")
         .factory("Authentication",
-            ['$rootScope', '$firebaseAuth', 'FIREBASE_URL',
-            function ($rootScope, $firebaseAuth, FIREBASE_URL) {
+            ['$rootScope', '$firebaseAuth', '$location', 'FIREBASE_URL',
+            function ($rootScope, $firebaseAuth, $location, FIREBASE_URL) {
 
                 var ref = new Firebase(FIREBASE_URL);
                 var auth = $firebaseAuth(ref);
 
                 return{
                     login:  function (user) {
-                        $rootScope.message = "Welcome " +
-                            user.email;
+                        auth.$authWithPassword({
+                            email:      user.email,
+                            password:   user.password
+                        })
+                            .then(function (regUser) {
+                            $location.path("/success");
+                        })
+                            .catch(function (error) {
+                                $rootScope.message = error.message;
+                            });
+
                     },  //login
 
                     register:   function (user) {
@@ -21,6 +30,16 @@
                                 password:  user.password
                             })
                             .then(function (regUser) {
+
+                                var regRef = new Firebase(FIREBASE_URL +
+                                    'users').child(regUser.uid).set({
+                                        data:   Firebase.ServerValue.TIMESTAMP,
+                                        regUser:    regUser.uid,
+                                        firstname:  user.firstname,
+                                        lastname:   user.lastname,
+                                        email:      user.email
+                                });     //user info
+
                                 $rootScope.message = "Welcome " +
                                     user.firstname +
                                     " Thanks for registration";
@@ -28,8 +47,8 @@
                             .catch(function (error) {
                                 $rootScope.message = error.message;
 
-                            });//createUser
+                            });     //createUser
                     }   //register
-                }; 
-        }]);//factory
+                };
+        }]);    //factory
 })();
