@@ -24,6 +24,10 @@
                 templateUrl:    'views/register.html',
                 controller:     'RegistrationCtrl'
             })
+            .when('/checkins/:uId/:mId', {
+                templateUrl:    'views/checkins.html',
+                controller:     'CheckinsCtrl'
+            })
             .when('/meetings', {
                 templateUrl:    'views/meetings.html',
                 controller:     'MeetingsCtrl',
