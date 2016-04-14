@@ -79,6 +79,16 @@
 
                 };      //myLove
                 
+                $scope.deleteLove = function (checkin, award) {
+                    var ref = new Firebase(FIREBASE_URL + 'users/' +
+                        $scope.whichuser + '/meetings/' +
+                        $scope.whichmeeting + '/checkins/' + checkin.$id
+                        + '/awards/' + award);
+
+                    var records = $firebaseObject(ref);
+                    records.$remove();
+                }
+
             }]);   //Controller
 
 })();
