@@ -33,6 +33,14 @@
                     });
                 };      //addCheckin
 
+                $scope.deleteCheckin = function (id) {
+                    var ref = new Firebase(FIREBASE_URL + 'users/' +
+                    $scope.whichuser + '/meetings/' +
+                    $scope.whichmeeting + '/checkins/' + id);
+
+                    var records = $firebaseObject(ref);
+                    records.$remove(id);
+                }
             }]);   //Controller
 
 })();
