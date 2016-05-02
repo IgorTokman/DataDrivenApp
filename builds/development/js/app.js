@@ -1,6 +1,7 @@
 (function(){
     "use strict";
-
+    
+    //Starts the main app module
     var myApp = angular.module('myApp', ['ngRoute', 'firebase'])
         .constant('FIREBASE_URL', 'https://angulardatadative.firebaseio.com/');
 
@@ -13,7 +14,8 @@
             }   //AUTH REQUIRED
         });  //event info
     }]);  //run
-
+    
+    //Performs the routing system
     myApp.config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .when('/login', {

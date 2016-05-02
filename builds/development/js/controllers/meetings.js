@@ -1,6 +1,7 @@
 (function(){
     "use strict";
 
+    //Implements the main app operations with meeting
     angular.module("myApp")
         .controller('MeetingsCtrl', ['$scope', '$rootScope',
             '$firebaseAuth', '$firebaseArray', 'FIREBASE_URL',

@@ -1,6 +1,7 @@
 (function(){
     "use strict";
 
+    //Performs the basic actions for registration system
      angular.module('myApp')
          .controller('RegistrationCtrl', ['$scope', 'Authentication',
              function ($scope, Authentication) {

@@ -1,6 +1,7 @@
 (function(){
     "use strict";
 
+    //Realizes the operation mechanism of check ins for user meetings
     angular.module("myApp")
         .controller('CheckinsCtrl', ['$scope', '$rootScope', '$location',
             '$firebaseObject','$routeParams', '$firebaseArray', 'FIREBASE_URL',

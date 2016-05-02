@@ -1,11 +1,12 @@
 (function(){
     "use strict";
 
+    //Realizes the interaction with Firebase
     angular.module("myApp")
         .factory("Authentication",
             ['$rootScope', '$firebaseAuth','$firebaseObject', '$location', 'FIREBASE_URL',
             function ($rootScope, $firebaseAuth, $firebaseObject, $location, FIREBASE_URL) {
-
+            
                 var ref = new Firebase(FIREBASE_URL);
                 var auth = $firebaseAuth(ref);
 
@@ -20,7 +21,7 @@
 
                    }
                 });
-
+                    
                 var myObject = {
                     login:  function (user) {
                         auth.$authWithPassword({
